@@ -59,12 +59,27 @@ public class BookService {
 
 
     public String getRandomBookTitle() {
-        List<Book> books = bookRepository.getAllBooks();
-        if (books.isEmpty()) {
-            return "No books available.";
+        List<Book> allBooks = bookRepository.getBooks(); // evităm findAll()
+
+        if (allBooks.isEmpty()) {
+            List<String> predefinedTitles = List.of(
+                    "The Quantum Enigma",
+                    "Lost in Time",
+                    "Whispers of the Forgotten",
+                    "The Silent Code",
+                    "Journey to Nowhere"
+            );
+
+            for (String title : predefinedTitles) {
+                Book book = new Book(title, "Unknown Author");
+                bookRepository.save(book);
+            }
+
+            allBooks = bookRepository.getBooks();
         }
-        Random random = new Random();
-        Book book = books.get(random.nextInt(books.size()));
-        return book.getName();
+
+        int index = new Random().nextInt(allBooks.size());
+        return allBooks.get(index).getName();
     }
+
 }

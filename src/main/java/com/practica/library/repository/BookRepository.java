@@ -53,4 +53,7 @@ public class BookRepository {
     public List<Book> getAllBooks() {
         return books;
     }
+
+    public void save(Book book) {
+    }
 }

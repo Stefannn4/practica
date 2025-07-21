@@ -29,7 +29,10 @@ public class Book {
     public Book() {
 
     }
-
+    public Book(String name, String author) {
+        this.name = name;
+        this.author = author;
+    }
     public Book(Long id, String name, String author) {
         this.id = id;
         this.author = author;
