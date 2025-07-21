@@ -77,6 +77,6 @@ public class BookController {
 
     @GetMapping("/randomTitle")
     public String getRandomBookTitle() {
-        return bookService.getRandomBookTitle();
+        return bookServiceJPA.getRandomBookTitle();
     }
 }
